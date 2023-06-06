@@ -3,7 +3,7 @@ Good IT Tools
 
 ##########################################################################
 
-The nice thing and read is trying to collect all it scripts in this area. :)
+I am trying to collect the scripts that I use functionally and daily in this area. :) :)
 
 ##########################################################################
 
