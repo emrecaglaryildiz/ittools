@@ -7,6 +7,6 @@ I am trying to collect the scripts that I use functionally and daily in this are
 
 ##########################################################################
 
-Güzel olan ve okuma tüm it scriptlerini bu alanda toplamaya çalışıyor. :)
+Güzel olan ve kullandığım IT scriptlerini bu alanda toplamaya çalışıyor. :)
 
 ##########################################################################
