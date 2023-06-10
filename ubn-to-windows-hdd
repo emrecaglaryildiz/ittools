@@ -1,0 +1,21 @@
+Ubuntu Server Makinenize alttaki yöntemi kullanarak windows server cihazınızın diskini bağlayabilirsiniz. 
+
+1- Windwos Server makinede paylaşılacak disk/alan paylaşıma açılır ve bu paylaşım alanında yetkili bir kullanıcı oluşturulur.
+
+2- Ubuntu Server üzerinde alttaki komutlar ile işlemleri gerçekleştirebilirsiniz. 
+  
+  + Ubuntu Server üzerinde paylaşımı kullanabilecek bir CIFS (Common Internet File System) paketinin yüklü olduğundan emin olun. Eğer yüklü değilse, aşağıdaki komutu kullanarak yükleyebilirsiniz
+  - sudo apt-get install cifs-utils
+  
+  + Mount işlemi için bir hedef dizin oluşturun. Örneğin, "/mnt/windows_share" gibi bir dizin oluşturabilirsiniz
+  - sudo mkdir /mnt/windows_share
+  
+  + Windows Server 2019 makinesinde paylaşıma açılmış olan hard disk klasörüne erişim sağlamak için mount işlemini gerçekleştirin. Aşağıdaki komutu kullanabilirsiniz
+    ** "//windows_server_ip/adı" kısmını, Windows Server 2019 makinesinin IP adresi ve paylaşılan klasörün adıyla değiştirin.
+    ** "kullanıcı_adı" ve "parola" kısımlarını Windows Server 2019'da erişim iznine sahip bir kullanıcı adı ve parola ile değiştirin.
+   - sudo mount -t cifs //windows_server_ip/adı paylaşılmış_klasör -o username=kullanıcı_adı,password=parola /mnt/windows_share
+  
+  + Mount işlemi başarılı bir şekilde gerçekleştirildiyse, "/mnt/windows_share" dizininde paylaşılan klasörün içeriğine erişebilirsiniz. Dosyaları okumak ve kullanmak için bu dizine gidin ve listeleyin
+  - cd /mnt/windows_share
+  - ls
+
