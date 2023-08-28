@@ -1,6 +1,6 @@
 import requests
 
-api_token = "3b034739f19d17"
+api_token = "ipinfo.io-TOKEN"
 
 def get_country(ip):
     url = f"https://ipinfo.io/{ip}/country?token={api_token}"
