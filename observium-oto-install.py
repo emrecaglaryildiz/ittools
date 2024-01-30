@@ -1,4 +1,5 @@
 import paramiko
+import time
 
 # Değişkenleri güncelleyin
 ssh_username = "user"
@@ -10,6 +11,20 @@ ip_list_file = "liste.txt"  # Sunucu IP'lerini içeren dosyanın adı
 def run_ssh_command(ssh, command):
     stdin, stdout, stderr = ssh.exec_command(command)
     return stdout.read().decode()
+
+def run_interactive_ssh_command(ssh, command):
+    # Interactive shell başlatma
+    shell = ssh.invoke_shell()
+
+    # sudo -s komutunu girme
+    shell.send(command + "\n")
+    time.sleep(1)  # Gerekirse, komutun tamamlanması için bir süre bekleyin
+
+    # Shell çıktısını okuma ve kapatma
+    output = shell.recv(65535).decode()
+    shell.close()
+
+    return output
 
 def main():
     try:
@@ -26,9 +41,7 @@ def main():
 
                 # sudo -s komutunu girme
                 sudo_command = "sudo -S -s"
-                ssh.sendline(sudo_command)
-                ssh.sendline(sudo_password)
-                ssh.recv(1000)  # Gelen çıktıyı atla
+                run_interactive_ssh_command(ssh, sudo_command + "\n" + sudo_password)
 
                 # .sh dosyasını kopyalama ve çalıştırma
                 scp = ssh.open_sftp()
