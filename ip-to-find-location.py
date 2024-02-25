@@ -1,3 +1,5 @@
+#ip adresinden konum bilgilerine ulaşmak içidir.
+
 import requests
 
 def get_location_info(ip_address):
